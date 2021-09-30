@@ -120,6 +120,42 @@ a:active {
   font-style: italic;
 }
 
+.reference {
+  background-image: url("./images/paper.jpg");
+}
+
+.penaltyCodeReference {
+  font-style: italic;
+}
+
+.quickReferenceContainer {
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quickReferenceSection {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #a7733f;
+}
+
+.quickReferenceTitle {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #a7733f;
+  margin-bottom: 10px;
+}
+
+.quickReferenceInfraction {
+  margin-bottom: 20px;
+}
+
+.quickReferenceInfractionName {
+  font-weight: 600;
+}
+
 .search {
   background-image: url("./images/paper.jpg");
 }

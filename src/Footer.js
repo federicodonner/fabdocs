@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
         </NavLink>
         <NavLink
-          to="/table"
+          to="/reference"
           className="footerElement"
           activeClassName="selectedButton"
         >
