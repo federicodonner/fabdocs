@@ -1,13 +1,15 @@
 import "./App.css";
+import { BrowserRouter } from "react-router-dom";
 import Router from "./Router";
 import Footer from "./Footer";
-import Home from "./Home";
 
 export default function App() {
   return (
     <div className="app">
-      <Router />
-      <Footer />
+      <BrowserRouter>
+        <Router />
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }

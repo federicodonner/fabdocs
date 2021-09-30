@@ -139,7 +139,10 @@ const penaltyGuidelines = [
         number: "1.6",
         name: "Disqualification",
         content: [
-          "A disqualification is a penalty that results in the player being removed entirely from the tournament. A disqualification is the harshest penalty and the player will be required to write a statement which will be later reviewed by LSS for potential further infractions (such as suspension, or in rare cases, a permanent ban).",
+          {
+            content:
+              "A disqualification is a penalty that results in the player being removed entirely from the tournament. A disqualification is the harshest penalty and the player will be required to write a statement which will be later reviewed by LSS for potential further infractions (such as suspension, or in rare cases, a permanent ban).",
+          },
         ],
       },
     ],

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import loaderImg from "./images/loader.svg";
 import penaltyGuidelines from "./data/penaltyGuidelines";
 
@@ -7,10 +7,6 @@ export default function Infraction(props) {
   const [loader, setLoader] = useState(true);
   const [selectedInfraction, setSelectedInfraction] = useState(null);
 
-  const history = useHistory();
-  function navigateBack() {
-    history.push("/section");
-  }
   useEffect(() => {
     var infractionParams = props.match.params.infraction;
     penaltyGuidelines.forEach((section) => {
@@ -40,9 +36,11 @@ export default function Infraction(props) {
       )}
       {!loader && (
         <div className="infractionContainer">
-          <div className="backArrowContainer" onClick={navigateBack}>
-            <i className="fas fa-long-arrow-alt-left backArrow"></i>
-          </div>
+          <Link to="/section">
+            <div className="backArrowContainer">
+              <i className="fas fa-long-arrow-alt-left backArrow"></i>
+            </div>
+          </Link>
           <div className="title">
             {selectedInfraction.number} - {selectedInfraction.name}
           </div>

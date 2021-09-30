@@ -51,7 +51,7 @@ a:active {
   padding-left: 5vw;
 }
 
-.sectionsContainer .sectionName {
+.sectionName {
   font-size: 1.1em;
   font-weight: 600;
 }
@@ -68,7 +68,7 @@ a:active {
   width: 86vw;
 }
 
-.subsectionsContainer .subsectionName {
+.subsectionName {
   margin-top: 5px;
   padding-top: 10px;
   margin-bottom: 5px;
@@ -120,6 +120,26 @@ a:active {
   font-style: italic;
 }
 
+.search {
+  background-image: url("./images/paper.jpg");
+}
+
+.searchBarContainer {
+  width: 100vw;
+  text-align: center;
+}
+
+.searchBar {
+  font-size: 1.2em;
+  padding: 4px 10px;
+  border-radius: 11px;
+  border: 1px solid #a7733f;
+}
+
+.about {
+  background-image: url("./images/paper.jpg");
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -141,16 +161,14 @@ a:active {
   width: 90vw;
 }
 
-.footerElementsContainer a,
-.footerElementsContainer a:hover,
-.footerElementsContainer a:visited,
-.footerElementsContainer a:active {
+a.footerElement {
+  text-align: center;
+  margin-top: 5px;
   color: white;
 }
 
-.footerElement {
-  text-align: center;
-  margin-top: 5px;
+a.selectedButton {
+  color: #a7733f;
 }
 
 .footerElement .icon {
