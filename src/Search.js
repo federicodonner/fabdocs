@@ -60,7 +60,7 @@ export default function Search() {
 
   return (
     <div className="mainRoute search">
-      <div className="title">SEARCH</div>
+      <div className="title">Search</div>
       {loader && (
         <div className="loaderContainer">
           <img className="loader" src={loaderImg} alt="loader" />
