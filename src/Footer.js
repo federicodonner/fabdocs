@@ -25,6 +25,16 @@ export default function Footer() {
           </div>
         </NavLink>
         <NavLink
+          to="/table"
+          className="footerElement"
+          activeClassName="selectedButton"
+        >
+          <div className="icon">
+            <i className="fas fa-table"></i>
+            <div className="label">Reference</div>
+          </div>
+        </NavLink>
+        <NavLink
           to="/search"
           className="footerElement"
           activeClassName="selectedButton"
