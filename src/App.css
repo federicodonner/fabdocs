@@ -11,10 +11,19 @@ body::after {
   height: 50px; /* Set same as footer's height */
 }
 
+a,
+a:hover,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: black;
+}
+
 .mainRoute {
   height: calc(100vh - 50px);
   overflow: auto;
 }
+
 .mainRoute .title {
   width: 100%;
   text-align: center;
@@ -68,12 +77,47 @@ body::after {
   position: relative;
 }
 
+.actualSubsectionName {
+  display: inline-block;
+  width: calc(86vw - 55px);
+}
+
 .navigateArrow {
   display: inline;
   position: absolute;
   right: 0vw;
   font-size: 1.4em;
   color: #a7733f;
+}
+
+.infraction {
+  background-image: url("./images/paper.jpg");
+}
+
+.infractionContentContainer {
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.backArrowContainer {
+  margin-left: 20px;
+  margin-top: 10px;
+  color: #a7733f;
+}
+
+.backArrow {
+  margin-right: 10px;
+  font-size: 1.6em;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.example {
+  padding-left: 20px;
+  font-style: italic;
 }
 
 .footer {
@@ -85,4 +129,33 @@ body::after {
   background-image: url("./images/paper_dark_darker.jpg");
   border-top: 3px solid #a7733f;
   filter: drop-shadow(0px 0px 14px black);
+}
+
+.footerElementsContainer {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  width: 90vw;
+}
+
+.footerElementsContainer a,
+.footerElementsContainer a:hover,
+.footerElementsContainer a:visited,
+.footerElementsContainer a:active {
+  color: white;
+}
+
+.footerElement {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.footerElement .icon {
+  font-size: 1.2em;
+}
+.footerElement .label {
+  font-size: 0.6em;
 }

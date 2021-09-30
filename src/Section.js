@@ -1,5 +1,12 @@
 import penaltyGuidelines from "./data/penaltyGuidelines";
+import { useHistory } from "react-router-dom";
+
 export default function Section() {
+  const history = useHistory();
+  function navigateToInfraction(infraction) {
+    history.push("/infraction/" + infraction);
+  }
+
   return (
     <div className="mainRoute section">
       <div className="title">Sections</div>
@@ -14,9 +21,16 @@ export default function Section() {
               <div className="subsectionsContainer">
                 {section.subsections.map((subsection, subsectionIndex) => {
                   return (
-                    <div key={subsectionIndex} className="subsectionName">
-                      {subsection.number && <span>{subsection.number} - </span>}
-                      {subsection.name}
+                    <div
+                      className="subsectionName"
+                      key={subsectionIndex}
+                      onClick={() => {
+                        navigateToInfraction(subsection.number);
+                      }}
+                    >
+                      <span className="actualSubsectionName">
+                        {subsection.number} -{subsection.name}
+                      </span>
                       <i className="far fa-arrow-alt-circle-right navigateArrow"></i>
                     </div>
                   );
