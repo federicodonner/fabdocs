@@ -53,11 +53,6 @@ const quickReferenceTable = [
         professional: "IP2",
       },
       {
-        infraction: "",
-        casual: "",
-        professional: "",
-      },
-      {
         infraction: "Presenting an illegal deck	",
         casual: "Warning",
         professional: "IP5/ML",
