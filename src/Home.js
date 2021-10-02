@@ -1,4 +1,3 @@
-import fabLogo from "./images/fab_logo_reg.png";
 export default function Home() {
   return (
     <div className="mainRoute home">
