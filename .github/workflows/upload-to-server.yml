@@ -31,5 +31,4 @@ jobs:
           password: ${{ secrets.ftp_password }}
           local-dir: ./build/
           server-dir: fabdocs.federicodonner.com/public_html/
-          dry-run: true
           # dangerous-clean-slate: true
