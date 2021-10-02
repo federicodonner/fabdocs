@@ -52,6 +52,14 @@ a:active {
   text-align: center;
 }
 
+.fabstyle {
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #a7733f;
+  color: #801710;
+  font-family: "Staatliches", cursive;
+  font-size: 4em;
+}
+
 .fabLogo {
   width: 75vw;
 }
@@ -215,14 +223,15 @@ a:active {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-around;
-  width: 90vw;
+  justify-content: space-between;
+  width: 95vw;
 }
 
 a.footerElement {
   text-align: center;
   margin-top: 5px;
   color: white;
+  flex-basis: 20%;
 }
 
 a.selectedButton {
