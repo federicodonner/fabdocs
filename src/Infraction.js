@@ -51,7 +51,7 @@ export default function Infraction(props) {
                   className={content.modifiers ? content.modifiers : ""}
                   key={index}
                 >
-                  {content.content}
+                  {content.text}
                 </p>
               );
             })}

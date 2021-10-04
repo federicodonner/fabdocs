@@ -19,7 +19,7 @@ export default function Search() {
       section.subsections.forEach((infraction) => {
         var contentToPush = "";
         infraction.content.forEach((content) => {
-          contentToPush = contentToPush + " " + content.content.toLowerCase();
+          contentToPush = contentToPush + " " + content.text.toLowerCase();
         });
         processedPenaltyGuidelines.push({
           number: infraction.number,
