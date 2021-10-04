@@ -59,7 +59,13 @@ a:active {
   font-family: "Staatliches", cursive;
   font-size: 4em;
 }
-
+.fabAndStyle {
+  font-size: 2.5em;
+  margin-bottom: -18px;
+  margin-top: -18px;
+  color: #a7733f;
+  font-family: "Staatliches", cursive;
+}
 .fabLogo {
   width: 75vw;
 }

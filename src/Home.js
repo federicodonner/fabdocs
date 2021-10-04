@@ -3,7 +3,7 @@ export default function Home() {
     <div className="mainRoute home">
       <div className="fabLogoContainer">
         <div className="fabstyle">FLESH</div>
-        <div className="fabstyle and">AND</div>
+        <div className="fabAndStyle">AND</div>
         <div className="fabstyle">BLOOD</div>
       </div>
       <div className="title">Penalty Guidelines</div>
