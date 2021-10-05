@@ -1,12 +1,7 @@
 import penaltyGuidelines from "./data/penaltyGuidelines";
-import { useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Section() {
-  const history = useHistory();
-  function navigateToInfraction(infraction) {
-    history.push("/infraction/" + infraction);
-  }
-
   return (
     <div className="mainRoute section">
       <div className="title">Sections</div>
@@ -21,18 +16,17 @@ export default function Section() {
               <div className="subsectionsContainer">
                 {section.subsections.map((subsection, subsectionIndex) => {
                   return (
-                    <div
-                      className="subsectionName"
+                    <NavLink
+                      to={"/infraction/" + subsection.number}
                       key={subsectionIndex}
-                      onClick={() => {
-                        navigateToInfraction(subsection.number);
-                      }}
                     >
-                      <span className="actualSubsectionName">
-                        {subsection.number} -{subsection.name}
-                      </span>
-                      <i className="far fa-arrow-alt-circle-right navigateArrow"></i>
-                    </div>
+                      <div className="subsectionName">
+                        <span className="actualSubsectionName">
+                          {subsection.number} -{subsection.name}
+                        </span>
+                        <i className="far fa-arrow-alt-circle-right navigateArrow"></i>
+                      </div>
+                    </NavLink>
                   );
                 })}
               </div>

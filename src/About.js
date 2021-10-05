@@ -5,7 +5,7 @@ export default function About() {
       <div className="aboutContentContainer">
         <p>
           This app is not official and in no way endorsed by Legend Story
-          Studios. I used their logo without permission, I hope no one gets mad.
+          Studios.
         </p>
         <p>Made with ❤️ by Federico Donner.</p>
         <p>
