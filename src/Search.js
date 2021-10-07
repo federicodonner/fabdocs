@@ -2,14 +2,18 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import loaderImg from "./images/loader.svg";
 import penaltyGuidelines from "./data/penaltyGuidelines";
+import tournamentRules from "./data/tournamentRules";
 
 export default function Search() {
   const [processedPenaltyGuidelines, setProcessedPenaltyGuidelines] = useState(
     null
   );
-  const [searchResults, setSearchResults] = useState([]);
+  const [processedTournamentRules, setProcessedTournamentRules] = useState(
+    null
+  );
+  const [policySearchResults, setPolicySearchResults] = useState([]);
+  const [tournamentSearchResults, setTournamentSearchResults] = useState([]);
   const [loader, setLoader] = useState(true);
-  const [searchLoader, setSearchLoader] = useState(false);
 
   const searchTerm = useRef(null);
 
@@ -28,23 +32,33 @@ export default function Search() {
         });
       });
     });
+
     setProcessedPenaltyGuidelines(processedPenaltyGuidelines);
+    var processedTournamentRules = [];
+    tournamentRules.forEach((section) => {
+      section.subsections.forEach((policy) => {
+        var contentToPush = "";
+        policy.content.forEach((content) => {
+          contentToPush = contentToPush + " " + content.text.toLowerCase();
+        });
+        processedTournamentRules.push({
+          number: policy.number,
+          name: policy.name,
+          content: contentToPush,
+        });
+      });
+    });
+    setProcessedTournamentRules(processedTournamentRules);
   }, []);
 
   useEffect(() => {
-    setLoader(false);
-  }, [processedPenaltyGuidelines]);
-
-  useEffect(() => {
-    if (searchResults.length >= 0) {
-      setSearchLoader(false);
-    }
-  }, [searchResults]);
+    if (processedPenaltyGuidelines && processedTournamentRules)
+      setLoader(false);
+  }, [processedPenaltyGuidelines, processedTournamentRules]);
 
   function searchUpdate() {
-    setSearchLoader(true);
     if (searchTerm.current.value === "") {
-      setSearchResults([]);
+      setPolicySearchResults([]);
       return;
     }
     var auxSearchResults = [];
@@ -55,7 +69,17 @@ export default function Search() {
         auxSearchResults.push(penalty);
       }
     });
-    setSearchResults(auxSearchResults);
+    setPolicySearchResults(auxSearchResults);
+
+    auxSearchResults = [];
+    processedTournamentRules.forEach((policy) => {
+      if (
+        policy.content.indexOf(searchTerm.current.value.toLowerCase()) !== -1
+      ) {
+        auxSearchResults.push(policy);
+      }
+    });
+    setTournamentSearchResults(auxSearchResults);
   }
 
   return (
@@ -76,15 +100,32 @@ export default function Search() {
               ref={searchTerm}
             />
           </div>
-          {searchLoader && <div>SearchLoaderPrendido</div>}
-          {searchResults.length > 0 && (
+          {policySearchResults.length > 0 && (
             <div className="subsectionsContainer">
-              {searchResults.map((infraction, index) => {
+              <div className="searchDocument">Penalty Guidelines</div>
+              {policySearchResults.map((infraction, index) => {
                 return (
                   <Link to={"/infraction/" + infraction.number} key={index}>
                     <div className="subsectionName">
-                      <span className="actualsubSectionName">
+                      <span className="actualSubsectionName">
                         {infraction.number} -{infraction.name}
+                      </span>
+                      <i className="far fa-arrow-alt-circle-right navigateArrow"></i>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+          {tournamentSearchResults.length > 0 && (
+            <div className="subsectionsContainer">
+              <div className="searchDocument">Tournament Rules</div>
+              {tournamentSearchResults.map((policy, index) => {
+                return (
+                  <Link to={"/tournamentpolicy/" + policy.number} key={index}>
+                    <div className="subsectionName">
+                      <span className="actualSubsectionName">
+                        {policy.number} -{policy.name}
                       </span>
                       <i className="far fa-arrow-alt-circle-right navigateArrow"></i>
                     </div>

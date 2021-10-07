@@ -59,6 +59,7 @@ a:active {
   font-family: "Staatliches", cursive;
   font-size: 4em;
 }
+
 .fabAndStyle {
   font-size: 2.5em;
   margin-bottom: -18px;
@@ -66,9 +67,11 @@ a:active {
   color: #a7733f;
   font-family: "Staatliches", cursive;
 }
+
 .fabLogo {
   width: 75vw;
 }
+
 .section {
   background-image: url("./images/paper.jpg");
 }
@@ -145,6 +148,29 @@ a:active {
   font-weight: 600;
 }
 
+.list {
+  margin-left: 10px;
+}
+
+.list:before {
+  content: "- ";
+}
+
+.sublist {
+  margin-left: 20px;
+}
+
+.sublist:before {
+  content: "-- ";
+}
+
+a.highlightedLink,
+a.highlightedLink:visited,
+a.highlightedLink:active {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 .example {
   padding-left: 20px;
   font-style: italic;
@@ -200,6 +226,15 @@ a:active {
   padding: 4px 10px;
   border-radius: 11px;
   border: 1px solid #a7733f;
+}
+
+.searchDocument {
+  font-size: 1.2em;
+  color: #a7733f;
+  margin-left: 20px;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .about {

@@ -1,4 +1,4 @@
-import penaltyGuidelines from "./data/penaltyGuidelines";
+import tournamentRules from "./data/tournamentRules";
 import { NavLink } from "react-router-dom";
 
 export default function Section() {
@@ -6,7 +6,7 @@ export default function Section() {
     <div className="mainRoute section">
       <div className="title">Sections</div>
       <div className="sectionsContainer">
-        {penaltyGuidelines.map((section, sectionIndex) => {
+        {tournamentRules.map((section, sectionIndex) => {
           return (
             <div key={sectionIndex}>
               <div className="sectionName">
@@ -17,7 +17,7 @@ export default function Section() {
                 {section.subsections.map((subsection, subsectionIndex) => {
                   return (
                     <NavLink
-                      to={"/infraction/" + subsection.number}
+                      to={"/tournamentpolicy/" + subsection.number}
                       key={subsectionIndex}
                     >
                       <div className="subsectionName">

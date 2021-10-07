@@ -20,8 +20,8 @@ export default function Footer() {
           activeClassName="selectedButton"
         >
           <div className="icon">
-            <i className="fas fa-file"></i>
-            <div className="label">Doc</div>
+            <i className="fas fa-balance-scale"></i>
+            <div className="label">PG</div>
           </div>
         </NavLink>
         <NavLink
@@ -32,6 +32,16 @@ export default function Footer() {
           <div className="icon">
             <i className="fas fa-table"></i>
             <div className="label">Reference</div>
+          </div>
+        </NavLink>
+        <NavLink
+          to="/tournament"
+          className="footerElement"
+          activeClassName="selectedButton"
+        >
+          <div className="icon">
+            <i className="fas fa-trophy"></i>
+            <div className="label">TR</div>
           </div>
         </NavLink>
         <NavLink
