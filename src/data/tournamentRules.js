@@ -647,47 +647,42 @@ const tournamentRules = [
           {
             text:
               "When a player concedes a game, the result will be processed as a game/match loss for the conceding player.",
-            modifiers: "list",
           },
           {
             text:
               "If a player concedes their match at any point after presenting their deck during the start of game procedure, they will be dropped from the tournament unless the Head Judge or Tournament Organizer decides otherwise. A player will not be dropped if there is a genuine reason why they need to stop playing the current match and they wish to rejoin the tournament in a future round, or if a player has no way in which they are able to win a game. In all instances where a player wants to concede and not be dropped from the tournament, a judge should be called to oversee the concession. Examples include but are not limited to:",
-            modifiers: "list",
           },
           {
             text:
               "There is an emergency that requires the attention of the player",
-            modifiers: "sublist",
+            modifiers: "list",
           },
-          { text: "A player doesn't feel well", modifiers: "sublist" },
+          { text: "A player doesn't feel well", modifiers: "list" },
           {
             text: "A player feels uncomfortable playing against the opponent",
-            modifiers: "sublist",
+            modifiers: "list",
           },
           {
             text:
               "A player spills a cup of coffee over themselves and their belongings (only) and they want to concede in order to clean themselves up",
-            modifiers: "sublist",
+            modifiers: "list",
           },
           {
             text:
               "A player has no cards left in their hand or deck and therefore has no way to win the game",
-            modifiers: "sublist",
+            modifiers: "list",
           },
           {
             text:
               "If a player asks for a concession at any point in a match after both players have presented their decks, that player will receive a match loss for their next round. This penalty may be upgraded or downgraded at the discretion of the Head Judge. Any kind of pressure or suggestion to concede, such as saying 'Come on man, don't defend my attack here' is considered to be asking for a concession.",
-            modifiers: "list",
           },
           {
             text:
               "For avoidance of doubt, a player may ask for a concession and/or concede (without being dropped from the tournament) before presenting their deck. For example, it is the last round of swiss and two friends are paired. One of these players already has enough match wins to make the top 8, so he concedes the match before presenting his deck. (Note - conceding before presenting decks can not be in exchange for any kind of consideration. Refer section 5.2 Bribery.)",
-            modifiers: "list",
           },
           {
             text:
               "If a player refuses to play a game, it is assumed that player is conceding the game. If both players refuse to play a game or match, the match result will be declared a match loss for both players.",
-            modifiers: "list",
           },
         ],
       },
