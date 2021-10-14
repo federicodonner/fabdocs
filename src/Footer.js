@@ -1,13 +1,22 @@
 import { NavLink } from "react-router-dom";
 
 export default function Footer() {
+  // Function to correct the selected highlight button in the footer
+  // when home is active
+  const checkIfHome = (match, location) => {
+    if (!location) return false;
+    const { pathname } = location;
+    return pathname === "/";
+  };
+
   return (
     <footer className="footer">
       <div className="footerElementsContainer">
         <NavLink
-          to="/home"
+          to="/"
           className="footerElement"
           activeClassName="selectedButton"
+          isActive={checkIfHome}
         >
           <div className="icon">
             <i className="fas fa-home"></i>
@@ -15,7 +24,7 @@ export default function Footer() {
           </div>
         </NavLink>
         <NavLink
-          to="/section"
+          to="/d/pg"
           className="footerElement"
           activeClassName="selectedButton"
         >
@@ -25,7 +34,7 @@ export default function Footer() {
           </div>
         </NavLink>
         <NavLink
-          to="/reference"
+          to="/r"
           className="footerElement"
           activeClassName="selectedButton"
         >
@@ -35,7 +44,7 @@ export default function Footer() {
           </div>
         </NavLink>
         <NavLink
-          to="/tournament"
+          to="/d/tr"
           className="footerElement"
           activeClassName="selectedButton"
         >
@@ -45,7 +54,7 @@ export default function Footer() {
           </div>
         </NavLink>
         <NavLink
-          to="/search"
+          to="/se"
           className="footerElement"
           activeClassName="selectedButton"
         >
@@ -55,7 +64,7 @@ export default function Footer() {
           </div>
         </NavLink>
         <NavLink
-          to="/about"
+          to="/a"
           className="footerElement"
           activeClassName="selectedButton"
         >

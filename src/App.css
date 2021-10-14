@@ -19,6 +19,18 @@ a:active {
   color: black;
 }
 
+.loaderContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+}
+
+.loader {
+  align-self: center;
+}
+
 .mainRoute {
   min-height: webkit-fill-available;
   min-height: 100%;

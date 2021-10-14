@@ -1,4 +1,5 @@
 import quickReferenceTable from "./data/quickReferenceTable";
+
 export default function Reference() {
   return (
     <div className="mainRoute reference">

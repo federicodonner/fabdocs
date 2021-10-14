@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import loaderImg from "./images/loader.svg";
+import SubsectionLink from "./SubsectionLink";
 import penaltyGuidelines from "./data/penaltyGuidelines";
 import tournamentRules from "./data/tournamentRules";
 
@@ -19,7 +19,7 @@ export default function Search() {
 
   useEffect(() => {
     var processedPenaltyGuidelines = [];
-    penaltyGuidelines.forEach((section) => {
+    penaltyGuidelines.sections.forEach((section) => {
       section.subsections.forEach((infraction) => {
         var contentToPush = "";
         infraction.content.forEach((content) => {
@@ -35,7 +35,7 @@ export default function Search() {
 
     setProcessedPenaltyGuidelines(processedPenaltyGuidelines);
     var processedTournamentRules = [];
-    tournamentRules.forEach((section) => {
+    tournamentRules.sections.forEach((section) => {
       section.subsections.forEach((policy) => {
         var contentToPush = "";
         policy.content.forEach((content) => {
@@ -59,6 +59,7 @@ export default function Search() {
   function searchUpdate() {
     if (searchTerm.current.value === "") {
       setPolicySearchResults([]);
+      setTournamentSearchResults([]);
       return;
     }
     var auxSearchResults = [];
@@ -103,16 +104,15 @@ export default function Search() {
           {policySearchResults.length > 0 && (
             <div className="subsectionsContainer">
               <div className="searchDocument">Penalty Guidelines</div>
-              {policySearchResults.map((infraction, index) => {
+              {policySearchResults.map((subsection, subsectionIndex) => {
                 return (
-                  <Link to={"/infraction/" + infraction.number} key={index}>
-                    <div className="subsectionName">
-                      <span className="actualSubsectionName">
-                        {infraction.number} -{infraction.name}
-                      </span>
-                      <i className="far fa-arrow-alt-circle-right navigateArrow"></i>
-                    </div>
-                  </Link>
+                  <SubsectionLink
+                    key={subsectionIndex}
+                    index={subsectionIndex}
+                    document="pg"
+                    number={subsection.number}
+                    name={subsection.name}
+                  />
                 );
               })}
             </div>
@@ -120,16 +120,15 @@ export default function Search() {
           {tournamentSearchResults.length > 0 && (
             <div className="subsectionsContainer">
               <div className="searchDocument">Tournament Rules</div>
-              {tournamentSearchResults.map((policy, index) => {
+              {tournamentSearchResults.map((subsection, subsectionIndex) => {
                 return (
-                  <Link to={"/tournamentpolicy/" + policy.number} key={index}>
-                    <div className="subsectionName">
-                      <span className="actualSubsectionName">
-                        {policy.number} -{policy.name}
-                      </span>
-                      <i className="far fa-arrow-alt-circle-right navigateArrow"></i>
-                    </div>
-                  </Link>
+                  <SubsectionLink
+                    key={subsectionIndex}
+                    index={subsectionIndex}
+                    document="tr"
+                    number={subsection.number}
+                    name={subsection.name}
+                  />
                 );
               })}
             </div>
