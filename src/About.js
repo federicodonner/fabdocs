@@ -14,7 +14,7 @@ export default function About() {
           <a className="bold" href="mailto:federico.donner@gmail.com">
             federico.donner@gmail.com
           </a>
-          .
+          .-
         </p>
       </div>
     </div>
