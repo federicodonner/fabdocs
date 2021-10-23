@@ -6,7 +6,6 @@ import Tournament from "./Tournament";
 import TournamentPolicy from "./TournamentPolicy";
 import Infraction from "./Infraction";
 import Reference from "./Reference";
-import Search from "./Search";
 import About from "./About";
 
 class Router extends React.Component {
@@ -23,7 +22,6 @@ class Router extends React.Component {
           path="/tournamentpolicy/:policy"
           component={TournamentPolicy}
         />
-        <Route exact path="/search" component={Search} />
         <Route exact path="/about" component={About} />
         <Route exact path="/home" component={Home} />
         <Route component={Home} />
