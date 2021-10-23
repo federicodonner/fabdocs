@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import SubsectionLink from "./SubsectionLink";
 
+// This component provides search functionality to the Document component
 export default function Search(props) {
   const [selectedDocument, setSelectedDocument] = useState(props.document);
   const [processedDocument, setProcessedDocument] = useState(null);
@@ -8,19 +9,22 @@ export default function Search(props) {
 
   const searchTerm = useRef(null);
 
+  // When the document is loaded, the search is cleared
   useEffect(() => {
     setSelectedDocument(props.document);
     searchTerm.current.value = "";
     setSearchResults([]);
-    props.setSearchActive(false);
-  }, [props]);
+  }, [props.document]);
 
+  // When the document is loaded, it's processed to make search easier
   useEffect(() => {
     var processedDocument = [];
     selectedDocument.sections.forEach((section) => {
       section.subsections.forEach((subsection) => {
         var contentToPush = "";
         subsection.content.forEach((content) => {
+          // For each subsection in the documents, it concatenates all the content
+          // in lower case to be able to search
           contentToPush = contentToPush + " " + content.text.toLowerCase();
         });
         processedDocument.push({
@@ -30,15 +34,20 @@ export default function Search(props) {
         });
       });
     });
+    // Processed document is the document but with subsection in plain lowercase text
     setProcessedDocument(processedDocument);
   }, [selectedDocument]);
 
+  // Function triggered on each onChange of the search field
   function searchUpdate() {
+    // If it's empty, it clears the search and tells the parent that it can show
+    // the document
     if (searchTerm.current.value === "") {
       setSearchResults([]);
       props.setSearchActive(false);
       return;
     }
+    // If there is a search term, it searches the processed document
     var auxSearchResults = [];
     processedDocument.forEach((subsection) => {
       if (
@@ -48,6 +57,8 @@ export default function Search(props) {
         auxSearchResults.push(subsection);
       }
     });
+    // Search results are pushed to state and the parent is told to hide the
+    // document and only show search results
     setSearchResults(auxSearchResults);
     props.setSearchActive(true);
   }

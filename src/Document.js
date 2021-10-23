@@ -31,6 +31,7 @@ export default function Document(props) {
   // Once the document is loaded, the loader is turned off
   useEffect(() => {
     if (selectedDocument) {
+      setSearchActive(false);
       setLoader(false);
     }
   }, [selectedDocument]);
