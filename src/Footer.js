@@ -34,16 +34,6 @@ export default function Footer() {
           </div>
         </NavLink>
         <NavLink
-          to="/r"
-          className="footerElement"
-          activeClassName="selectedButton"
-        >
-          <div className="icon">
-            <i className="fas fa-table"></i>
-            <div className="label">Reference</div>
-          </div>
-        </NavLink>
-        <NavLink
           to="/d/tr"
           className="footerElement"
           activeClassName="selectedButton"
@@ -54,15 +44,26 @@ export default function Footer() {
           </div>
         </NavLink>
         <NavLink
-          to="/se"
+          to="/r"
           className="footerElement"
           activeClassName="selectedButton"
         >
           <div className="icon">
-            <i className="fas fa-search"></i>
-            <div className="label">Search</div>
+            <i className="fas fa-table"></i>
+            <div className="label">Reference</div>
           </div>
         </NavLink>
+        <a
+          href="https://fabtcg.com/resources/rules-and-policy-center/release-notes/tales-aria-release-notes/"
+          target="_blank"
+          rel="noreferrer"
+          className="footerElement"
+        >
+          <div className="icon">
+            <i className="fas fa-file"></i>
+            <div className="label">Notes</div>
+          </div>
+        </a>
         <NavLink
           to="/a"
           className="footerElement"

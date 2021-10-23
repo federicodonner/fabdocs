@@ -249,12 +249,17 @@ a.highlightedLink:active {
 }
 
 .search {
-  background-image: url("./images/paper.jpg");
+  margin-bottom: 20px;
 }
 
 .searchBarContainer {
   width: 100vw;
   text-align: center;
+}
+
+.searchTag {
+  font-weight: 600;
+  margin-right: 20px;
 }
 
 .searchBar {

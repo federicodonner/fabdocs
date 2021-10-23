@@ -6,9 +6,16 @@ export default function Home() {
         <div className="fabAndStyle">AND</div>
         <div className="fabstyle">BLOOD</div>
       </div>
-      <div className="title">Penalty Guidelines</div>
-      <div className="subtitle">Version 1.7 (2021-09-24)</div>
-      <p>See about for details</p>
+      <div className="title">Docs</div>
+      <p>
+        You can browse or search through the Penalty Guidelines and the
+        Tournament Rules. Select the document in the footer.
+      </p>
+      <p>
+        The Reference section is the quick reference from the Penalty
+        Guidelines.
+      </p>
+      <p>Notes is a link to Tailes of Aria Release Notes.</p>
     </div>
   );
 }

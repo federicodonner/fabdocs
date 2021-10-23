@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import tournamentRules from "./data/tournamentRules";
 import penaltyGuidelines from "./data/penaltyGuidelines";
+import Search from "./Search";
 import SubsectionLink from "./SubsectionLink";
 import loaderImg from "./images/loader.svg";
 
@@ -8,6 +9,7 @@ import loaderImg from "./images/loader.svg";
 export default function Document(props) {
   const [selectedDocument, setSelectedDocument] = useState(null);
   const [loader, setLoader] = useState(true);
+  const [searchActive, setSearchActive] = useState(false);
 
   // It takes the document code from the URL d/:code
   // All available documents need to be improted at the top and added to this switch
@@ -43,31 +45,39 @@ export default function Document(props) {
       {!loader && selectedDocument && (
         <>
           <div className="title">{selectedDocument.name}</div>
-          <div className="sectionsContainer">
-            {selectedDocument.sections.map((section, sectionIndex) => {
-              return (
-                <div key={sectionIndex}>
-                  <div className="sectionName">
-                    {section.number && <span>{section.number} - </span>}
-                    {section.name}
+          <Search
+            document={selectedDocument}
+            setSearchActive={setSearchActive}
+          />
+          {!searchActive && (
+            <div className="sectionsContainer">
+              {selectedDocument.sections.map((section, sectionIndex) => {
+                return (
+                  <div key={sectionIndex}>
+                    <div className="sectionName">
+                      {section.number && <span>{section.number} - </span>}
+                      {section.name}
+                    </div>
+                    <div className="subsectionsContainer">
+                      {section.subsections.map(
+                        (subsection, subsectionIndex) => {
+                          return (
+                            <SubsectionLink
+                              key={subsectionIndex}
+                              index={subsectionIndex}
+                              document={props.match.params.document}
+                              number={subsection.number}
+                              name={subsection.name}
+                            />
+                          );
+                        }
+                      )}
+                    </div>
                   </div>
-                  <div className="subsectionsContainer">
-                    {section.subsections.map((subsection, subsectionIndex) => {
-                      return (
-                        <SubsectionLink
-                          key={subsectionIndex}
-                          index={subsectionIndex}
-                          document={props.match.params.document}
-                          number={subsection.number}
-                          name={subsection.name}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </>
       )}
     </div>

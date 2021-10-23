@@ -1,138 +1,81 @@
 import React, { useState, useEffect, useRef } from "react";
-import loaderImg from "./images/loader.svg";
 import SubsectionLink from "./SubsectionLink";
-import penaltyGuidelines from "./data/penaltyGuidelines";
-import tournamentRules from "./data/tournamentRules";
 
-export default function Search() {
-  const [processedPenaltyGuidelines, setProcessedPenaltyGuidelines] = useState(
-    null
-  );
-  const [processedTournamentRules, setProcessedTournamentRules] = useState(
-    null
-  );
-  const [policySearchResults, setPolicySearchResults] = useState([]);
-  const [tournamentSearchResults, setTournamentSearchResults] = useState([]);
-  const [loader, setLoader] = useState(true);
+export default function Search(props) {
+  const [selectedDocument, setSelectedDocument] = useState(props.document);
+  const [processedDocument, setProcessedDocument] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
 
   const searchTerm = useRef(null);
 
   useEffect(() => {
-    var processedPenaltyGuidelines = [];
-    penaltyGuidelines.sections.forEach((section) => {
-      section.subsections.forEach((infraction) => {
-        var contentToPush = "";
-        infraction.content.forEach((content) => {
-          contentToPush = contentToPush + " " + content.text.toLowerCase();
-        });
-        processedPenaltyGuidelines.push({
-          number: infraction.number,
-          name: infraction.name,
-          content: contentToPush,
-        });
-      });
-    });
-
-    setProcessedPenaltyGuidelines(processedPenaltyGuidelines);
-    var processedTournamentRules = [];
-    tournamentRules.sections.forEach((section) => {
-      section.subsections.forEach((policy) => {
-        var contentToPush = "";
-        policy.content.forEach((content) => {
-          contentToPush = contentToPush + " " + content.text.toLowerCase();
-        });
-        processedTournamentRules.push({
-          number: policy.number,
-          name: policy.name,
-          content: contentToPush,
-        });
-      });
-    });
-    setProcessedTournamentRules(processedTournamentRules);
-  }, []);
+    setSelectedDocument(props.document);
+    searchTerm.current.value = "";
+    setSearchResults([]);
+    props.setSearchActive(false);
+  }, [props]);
 
   useEffect(() => {
-    if (processedPenaltyGuidelines && processedTournamentRules)
-      setLoader(false);
-  }, [processedPenaltyGuidelines, processedTournamentRules]);
+    var processedDocument = [];
+    selectedDocument.sections.forEach((section) => {
+      section.subsections.forEach((subsection) => {
+        var contentToPush = "";
+        subsection.content.forEach((content) => {
+          contentToPush = contentToPush + " " + content.text.toLowerCase();
+        });
+        processedDocument.push({
+          number: subsection.number,
+          name: subsection.name,
+          content: contentToPush,
+        });
+      });
+    });
+    setProcessedDocument(processedDocument);
+  }, [selectedDocument]);
 
   function searchUpdate() {
     if (searchTerm.current.value === "") {
-      setPolicySearchResults([]);
-      setTournamentSearchResults([]);
+      setSearchResults([]);
+      props.setSearchActive(false);
       return;
     }
     var auxSearchResults = [];
-    processedPenaltyGuidelines.forEach((penalty) => {
+    processedDocument.forEach((subsection) => {
       if (
-        penalty.content.indexOf(searchTerm.current.value.toLowerCase()) !== -1
+        subsection.content.indexOf(searchTerm.current.value.toLowerCase()) !==
+        -1
       ) {
-        auxSearchResults.push(penalty);
+        auxSearchResults.push(subsection);
       }
     });
-    setPolicySearchResults(auxSearchResults);
-
-    auxSearchResults = [];
-    processedTournamentRules.forEach((policy) => {
-      if (
-        policy.content.indexOf(searchTerm.current.value.toLowerCase()) !== -1
-      ) {
-        auxSearchResults.push(policy);
-      }
-    });
-    setTournamentSearchResults(auxSearchResults);
+    setSearchResults(auxSearchResults);
+    props.setSearchActive(true);
   }
 
   return (
-    <div className="mainRoute search">
-      <div className="title">Search</div>
-      {loader && (
-        <div className="loaderContainer">
-          <img className="loader" src={loaderImg} alt="loader" />
-        </div>
-      )}
-      {!loader && (
-        <div>
-          <div className="searchBarContainer">
-            <input
-              type="text"
-              className="searchBar"
-              onChange={searchUpdate}
-              ref={searchTerm}
-            />
-          </div>
-          {policySearchResults.length > 0 && (
-            <div className="subsectionsContainer">
-              <div className="searchDocument">Penalty Guidelines</div>
-              {policySearchResults.map((subsection, subsectionIndex) => {
-                return (
-                  <SubsectionLink
-                    key={subsectionIndex}
-                    index={subsectionIndex}
-                    document="pg"
-                    number={subsection.number}
-                    name={subsection.name}
-                  />
-                );
-              })}
-            </div>
-          )}
-          {tournamentSearchResults.length > 0 && (
-            <div className="subsectionsContainer">
-              <div className="searchDocument">Tournament Rules</div>
-              {tournamentSearchResults.map((subsection, subsectionIndex) => {
-                return (
-                  <SubsectionLink
-                    key={subsectionIndex}
-                    index={subsectionIndex}
-                    document="tr"
-                    number={subsection.number}
-                    name={subsection.name}
-                  />
-                );
-              })}
-            </div>
-          )}
+    <div className="search">
+      <div className="searchBarContainer">
+        <span className="searchTag">Search</span>
+        <input
+          type="text"
+          className="searchBar"
+          onChange={searchUpdate}
+          ref={searchTerm}
+        />
+      </div>
+      {searchResults.length > 0 && (
+        <div className="subsectionsContainer">
+          {searchResults.map((subsection, subsectionIndex) => {
+            return (
+              <SubsectionLink
+                key={subsectionIndex}
+                index={subsectionIndex}
+                document={props.document.code}
+                number={subsection.number}
+                name={subsection.name}
+              />
+            );
+          })}
         </div>
       )}
     </div>
